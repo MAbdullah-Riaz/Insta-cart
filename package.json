@@ -1,6 +1,6 @@
 {
   "name": "insta-cart",
-  "nth-check": "2.0.1",
+  "nth-check": "^2.0.1",
   "version": "0.1.0",
   "private": false,
   "homepage": "https://mabdullah-riaz.github.io/Insta-cart/",
