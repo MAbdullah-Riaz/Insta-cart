@@ -1,4 +1,3 @@
-// import { async } from '@firebase/util';
 import { useState } from 'react';
 import {
   auth,
@@ -25,6 +24,7 @@ const SignUpForm = () => {
   const resetFormField = () => {
     setformFields(defaultFormFields);
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
@@ -37,8 +37,6 @@ const SignUpForm = () => {
         password
       );
 
-      console.log(user);
-      // const response =
       await createUserDocFromAuth(user, { displayName });
       resetFormField();
     } catch (error) {
