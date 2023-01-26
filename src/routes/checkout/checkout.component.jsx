@@ -1,8 +1,9 @@
 import './checkout.styles.scss';
 import { CartContext } from '../../contexts/cart.context';
 import { useContext } from 'react';
+import CheckoutItem from '../../components/checkout-Item/checkout-item.component';
 const Checkout = () => {
-  const { cartItems, addItemToCart, removeItemToCart } =
+  const { cartItems, addItemToCart, removeItemToCart,cartTotal } =
     useContext(CartContext);
 
   return (
@@ -24,20 +25,10 @@ const Checkout = () => {
         <span>Remove</span>
       </div>
 
-      {cartItems.map((cartItem) => {
-        const { id, name, quantity } = cartItem;
-
-        return (
-          <div key={id}>
-            <h2>{name}</h2>
-            <span> {quantity}</span>
-            <span onClick={() => removeItemToCart(cartItem)}>decrement</span>
-            <br />
-            <span onClick={() => addItemToCart(cartItem)}>increment</span>
-          </div>
-        );
-      })}
-      <span className='Total'>Total: 0 </span>
+      {cartItems.map((cartItem) => (
+        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+      ))}
+      <span className='total'>Total: ${cartTotal} </span>
     </div>
   );
 };
