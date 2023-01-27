@@ -22,7 +22,6 @@ export const CategoriesProvider = ({ children }) => {
 
   //add first time categories in the database doc in firestore.
   // useEffect(() => {
-  //   console.log(SHOP_DATA);
   //   addCollectionAndDocuments('categories', SHOP_DATA);
   // }, []);
 

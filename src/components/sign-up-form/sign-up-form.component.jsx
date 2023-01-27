@@ -47,8 +47,6 @@ const SignUpForm = () => {
       );
     }
   };
-
-  console.log(formFields);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setformFields({ ...formFields, [name]: value });
