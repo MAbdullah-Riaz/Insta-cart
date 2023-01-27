@@ -1,4 +1,3 @@
-
 import { UserContext } from '../../contexts/user.context';
 import { useState, useContext } from 'react';
 import {
@@ -12,7 +11,7 @@ import {
 import './sign-in.styles.scss';
 
 import FormInput from '../form-input/form-input.component';
-import Button from '../button/button.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
 const defaultFormFields = {
   email: '',
@@ -84,9 +83,12 @@ const SignInForm = () => {
         />
         <div className='buttons-container'>
           <Button type='submit'>Sign In</Button>
-          <Button buttonType='google' onClick={signInWithGoogle}>
+          <Button
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={signInWithGoogle}
+          >
             Google Sign In
-          </Button>{' '}
+          </Button>
           {/* <Button buttonType='google' onClick={signInWithGoogle}>
             Google Sign In(pop)
           </Button> */}
