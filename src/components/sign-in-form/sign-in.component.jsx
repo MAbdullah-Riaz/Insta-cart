@@ -1,4 +1,4 @@
-import { UserContext } from '../../contexts/user.context';
+// import { UserContext } from '../../contexts/user.context';
 import { useState, useContext } from 'react';
 import {
   auth,
@@ -22,7 +22,7 @@ const SignInForm = () => {
   const [formFields, setformFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const { setcurrentUser } = useContext(UserContext);
+  // const { setcurrentUser } = useContext(UserContext);
 
   const resetFormField = () => {
     setformFields(defaultFormFields);
