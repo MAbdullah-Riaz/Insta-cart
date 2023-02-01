@@ -10,20 +10,26 @@ export const NavigationContainer = styled.div`
 `;
 
 export const LogoContainer = styled(Link)`
-  height: 100%;
   width: 70px;
-  padding: 25px;
+  padding: 15px;
 `;
 
 export const NavLinks = styled.div`
-  width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  width: max-content;
+  @media (max-width: 30em) {
+    font-size: 14px;
+  }
 `;
 
 export const NavLink = styled(Link)`
   padding: 10px 15px;
   cursor: pointer;
+  @media (max-width: 30em) {
+    padding: 10px 10px;
+    }
+  }
 `;
