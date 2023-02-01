@@ -22,10 +22,6 @@ import {
   getDocs,
 } from 'firebase/firestore';
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyDjyrinSUHeZLGn0Mz4vHqRGVV2KcOKw-4',
   authDomain: 'insta-cart-db.firebaseapp.com',
@@ -71,7 +67,7 @@ export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, 'categories');
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map((doc) => doc.data()); 
+  return querySnapshot.docs.map((doc) => doc.data());
 };
 
 export const verifyUserDocFromAuth = async (userAuth) => {
@@ -87,7 +83,7 @@ export const verifyUserDocFromAuth = async (userAuth) => {
 
 export const createUserDocFromAuth = async (
   userAuth,
-  additionalInformation = { displayName: 'default' }
+  additionalInformation = {}
 ) => {
   if (!userAuth) return;
 

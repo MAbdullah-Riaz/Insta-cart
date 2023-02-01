@@ -15,18 +15,18 @@ import { setcurrentUser } from './store/user/user.action';
 // import { createAction } from './Utils/reducer/reducer.utills';
 
 const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChangedListerner((user) => {
-  //     if (user) {
-  //       createUserDocFromAuth(user);
-  //     }
-  //     dispatch(setcurrentUser(user));
-  //   });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListerner((user) => {
+      if (user) {
+        createUserDocFromAuth(user);
+      }
+      dispatch(setcurrentUser(user));
+    });
 
-  //   return unsubscribe;
-  // }, []);
+    return unsubscribe;
+  }, []);
 
   return (
     <Routes>
