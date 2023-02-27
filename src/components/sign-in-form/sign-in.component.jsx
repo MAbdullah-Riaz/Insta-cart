@@ -1,17 +1,16 @@
-// import { UserContext } from '../../contexts/user.context';
 import { useState } from 'react';
-import {
-  auth,
-  createAuthUserWithEmailAndPassword,
-  createUserDocFromAuth,
-  signInWithGooglePopup,
-  signInAuthUserWithEmailAndPassword,
-} from '../../Utils/firebase/firebase.utills';
+import { useDispatch } from 'react-redux';
+import FormInput from '../form-input/form-input.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
 import './sign-in.styles.scss';
 
-import FormInput from '../form-input/form-input.component';
-import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from '../../store/user/user.action';
+
+
 
 const defaultFormFields = {
   email: '',
@@ -19,42 +18,29 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  const dispatch = useDispatch();
   const [formFields, setformFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-
-  // const { setcurrentUser } = useContext(UserContext);
 
   const resetFormField = () => {
     setformFields(defaultFormFields);
   };
 
   const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
-    // await createUserDocFromAuth(user);
+    dispatch(googleSignInStart());
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-      console.log(user);
-      // setcurrentUser(user);
-      resetFormField(defaultFormFields);
+      dispatch(emailSignInStart(email, password));
+      resetFormField();
     } catch (error) {
-      switch (error) {
-        case 'auth/wrong-password':
-          alert('Username or password does not matches');
-          break;
-        case 'auth/user-not-found':
-          alert('Username or password does not matches');
-          break;
-        default:
-      }
+      console.log('user sign in failed ', error);
     }
   };
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setformFields({ ...formFields, [name]: value });
@@ -89,9 +75,6 @@ const SignInForm = () => {
           >
             Google Sign In
           </Button>
-          {/* <Button buttonType='google' onClick={signInWithGoogle}>
-            Google Sign In(pop)
-          </Button> */}
         </div>
       </form>
     </div>

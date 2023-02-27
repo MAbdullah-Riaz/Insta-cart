@@ -10,22 +10,15 @@ import { useEffect } from 'react';
 import {
   onAuthStateChangedListerner,
   createUserDocFromAuth,
+  getCurrentUser,
 } from './Utils/firebase/firebase.utills';
-import { setcurrentUser } from './store/user/user.action';
-// import { createAction } from './Utils/reducer/reducer.utills';
+import { checkUserSession } from './store/user/user.action';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListerner((user) => {
-      if (user) {
-        createUserDocFromAuth(user);
-      }
-      dispatch(setcurrentUser(user));
-    });
-
-    return unsubscribe;
+    dispatch(checkUserSession());
   }, []);
 
   return (
