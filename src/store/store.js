@@ -10,7 +10,7 @@ import { rootSaga } from './root-saga';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cat'],
+  blacklist: ['cat'],
 };
 
 const sagaMiddleware = createSagaMiddleware();
